@@ -6,7 +6,31 @@
         xmlns:local="clr-namespace:XPSDocReader"
         mc:Ignorable="d"
         Title="XPSDocReader" Height="900" MinHeight="600" Width="1350" MinWidth="900" WindowStartupLocation="CenterScreen" ResizeMode="CanResizeWithGrip">
+    <Window.Resources>
+        <SolidColorBrush x:Key="colorSt" Color="#AFE9DD"/>
+        <Style TargetType="MenuItem">
+            <Setter Property="ItemsControl.Background" Value="#AFE9DD"/>
+            <Setter Property="ItemsControl.FontSize" Value="13"/>
+            <Setter Property="ItemsControl.Foreground" Value="Black"/>
+        </Style>
+    </Window.Resources>
     <Grid>
-        
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+        <Menu x:Name="menu" Grid.Row="0" Background="{StaticResource colorSt}">
+            <MenuItem Header="File">
+                <MenuItem Header="Open" Click="Open_Click"/>
+                <MenuItem Header="Save" Click="Save_Click"/>
+                <MenuItem Header="Exit" Click="Exit_Click"/>
+            </MenuItem>
+            <MenuItem Header="Help">
+                <MenuItem Header="About XPSDocReader" Click="About_Click"/>
+            </MenuItem>
+        </Menu>
+        <DocumentViewer x:Name="docViewer" Grid.Row="1" Background="White"></DocumentViewer>
+        <StatusBar x:Name="statusBar" Grid.Row="2" Background="{StaticResource colorSt}"></StatusBar>
     </Grid>
 </Window>
