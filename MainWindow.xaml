@@ -5,13 +5,18 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:XPSDocReader"
         mc:Ignorable="d"
-        Title="XPSDocReader" Height="900" MinHeight="600" Width="1350" MinWidth="900" WindowStartupLocation="CenterScreen" ResizeMode="CanResizeWithGrip">
+        Title="XPSDocReader" Height="900" MinHeight="600" Width="1350" MinWidth="900" WindowStartupLocation="CenterScreen" ResizeMode="CanResizeWithGrip" Loaded="Window_Loaded">
     <Window.Resources>
         <SolidColorBrush x:Key="colorSt" Color="#AFE9DD"/>
         <Style TargetType="MenuItem">
             <Setter Property="ItemsControl.Background" Value="#AFE9DD"/>
             <Setter Property="ItemsControl.FontSize" Value="13"/>
             <Setter Property="ItemsControl.Foreground" Value="Black"/>
+        </Style>
+        <Style x:Key="sepStyle">
+            <Setter Property="ItemsControl.Background" Value="Black"/>
+            <Setter Property="ItemsControl.Width" Value="1"/>
+            <Setter Property="ItemsControl.HorizontalAlignment" Value="Left"/>
         </Style>
     </Window.Resources>
     <Grid>
@@ -31,6 +36,9 @@
             </MenuItem>
         </Menu>
         <DocumentViewer x:Name="docViewer" Grid.Row="1" Background="White"></DocumentViewer>
-        <StatusBar x:Name="statusBar" Grid.Row="2" Background="{StaticResource colorSt}"></StatusBar>
+        <StatusBar x:Name="statusBar" Grid.Row="2" Background="{StaticResource colorSt}">
+            <TextBlock x:Name="tbstatusBar"/>
+            <Separator Style="{StaticResource sepStyle}"/>
+        </StatusBar>
     </Grid>
 </Window>

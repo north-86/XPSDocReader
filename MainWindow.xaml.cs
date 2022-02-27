@@ -54,5 +54,10 @@ namespace XPSDocReader
             about.Owner = this;
             about.ShowDialog();
         }
+
+        private void Window_Loaded(object sender, RoutedEventArgs e)
+        {
+            tbstatusBar.Text = "In Action";
+        }
     }
 }
