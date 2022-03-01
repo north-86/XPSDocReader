@@ -8,7 +8,7 @@
         Title="XPSDocReader" Height="900" MinHeight="600" Width="1350" MinWidth="900" WindowStartupLocation="CenterScreen" ResizeMode="CanResizeWithGrip" Loaded="Window_Loaded">
     <Window.Resources>
         <SolidColorBrush x:Key="colorSt" Color="#AFE9DD"/>
-        <Style TargetType="MenuItem">
+        <Style TargetType="{x:Type MenuItem}">
             <Setter Property="ItemsControl.Background" Value="#AFE9DD"/>
             <Setter Property="ItemsControl.FontSize" Value="13"/>
             <Setter Property="ItemsControl.Foreground" Value="Black"/>
@@ -18,6 +18,46 @@
             <Setter Property="ItemsControl.Width" Value="1"/>
             <Setter Property="ItemsControl.HorizontalAlignment" Value="Left"/>
         </Style>
+        <Style x:Key="{x:Type DocumentViewer}" TargetType="{x:Type DocumentViewer}">
+            <Setter Property="Foreground" Value="{DynamicResource {x:Static SystemColors.WindowTextBrushKey}}"/>
+            <Setter Property="Background" Value="{DynamicResource {x:Static SystemColors.ControlBrushKey}}"/>
+            <Setter Property="FocusVisualStyle" Value="{x:Null}"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type DocumentViewer}">
+                        <Border BorderThickness="{TemplateBinding BorderThickness}" BorderBrush="{TemplateBinding BorderBrush}" Focusable="False">
+                            <Grid KeyboardNavigation.TabNavigation="Local">
+                                <Grid.Background>
+                                    <SolidColorBrush Color="{DynamicResource ControlColor}"/>
+                                </Grid.Background>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="Auto"/>
+                                    <RowDefinition Height="*"/>
+                                    <RowDefinition Height="Auto"/>
+                                </Grid.RowDefinitions>
+                                <ToolBar Grid.Row="0" ToolBarTray.IsLocked="True" KeyboardNavigation.TabNavigation="Continue" Background="#AFE9DD">
+                                    <Button Command="ApplicationCommands.Print" CommandTarget="{Binding RelativeSource={RelativeSource TemplatedParent}}" Content="Print"></Button>
+                                    <Separator Style="{StaticResource sepStyle}"/>
+                                    <Button Command="ApplicationCommands.Copy" CommandTarget="{Binding RelativeSource={RelativeSource TemplatedParent}}" Content="Copy"></Button>
+                                    <Separator Style="{StaticResource sepStyle}"/>
+                                    <Button Command="NavigationCommands.IncreaseZoom" CommandTarget="{Binding RelativeSource={RelativeSource TemplatedParent}}" Content="Zoom In"></Button>
+                                    <Button Command="NavigationCommands.DecreaseZoom" CommandTarget="{Binding RelativeSource={RelativeSource TemplatedParent}}" Content="Zoom Out"></Button>
+                                    <Separator Style="{StaticResource sepStyle}"/>
+                                    <Button Command="NavigationCommands.Zoom" CommandTarget="{Binding RelativeSource={RelativeSource TemplatedParent}}" CommandParameter="100.0" Content="Actual Size"></Button>
+                                    <Button Command="DocumentViewer.FitToWidthCommand" CommandTarget="{Binding RelativeSource={RelativeSource TemplatedParent}}" Content="Fit to Width"></Button>
+                                    <Button Command="DocumentViewer.FitToMaxPagesAcrossCommand" CommandTarget="{Binding RelativeSource={RelativeSource TemplatedParent}}" CommandParameter="1" Content="Whole Page"></Button>
+                                    <Button Command="DocumentViewer.FitToMaxPagesAcrossCommand" CommandTarget="{Binding RelativeSource={RelativeSource TemplatedParent}}" CommandParameter="2" Content="Two Pages"></Button>
+                                    <Separator Style="{StaticResource sepStyle}"/>
+                                </ToolBar>
+                                <ScrollViewer Grid.Row="1" CanContentScroll="true" HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Auto" x:Name="PART_ContentHost" IsTabStop="true" Background="White"></ScrollViewer>
+                                <ContentControl Grid.Row="2" x:Name="PART_FindToolBarHost"/>
+                            </Grid>
+                        </Border>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+        <Color x:Key="ControlColor">#AFE9DD</Color>
     </Window.Resources>
     <Grid>
         <Grid.RowDefinitions>
@@ -35,7 +75,7 @@
                 <MenuItem Header="About XPSDocReader" Click="About_Click"/>
             </MenuItem>
         </Menu>
-        <DocumentViewer x:Name="docViewer" Grid.Row="1" Background="White"></DocumentViewer>
+        <DocumentViewer x:Name="docViewer" Height="843" Margin="0,19,0,0" Grid.RowSpan="2" VerticalAlignment="Top"/>
         <StatusBar x:Name="statusBar" Grid.Row="2" Background="{StaticResource colorSt}">
             <TextBlock x:Name="tbstatusBar"/>
             <Separator Style="{StaticResource sepStyle}"/>
