@@ -33,24 +33,38 @@
                                 <Grid.RowDefinitions>
                                     <RowDefinition Height="Auto"/>
                                     <RowDefinition Height="*"/>
-                                    <RowDefinition Height="Auto"/>
                                 </Grid.RowDefinitions>
                                 <ToolBar Grid.Row="0" ToolBarTray.IsLocked="True" KeyboardNavigation.TabNavigation="Continue" Background="#AFE9DD" BorderBrush="Black" BorderThickness="1"> 
-                                    <Button Command="ApplicationCommands.Print" CommandTarget="{Binding RelativeSource={RelativeSource TemplatedParent}}" Content="Print"></Button>
+                                    <Button Command="ApplicationCommands.Print" CommandTarget="{Binding RelativeSource={RelativeSource TemplatedParent}}" Content="Print">
+                                        
+                                    </Button>
                                     <Separator Style="{StaticResource sepStyle}"/>
-                                    <Button Command="ApplicationCommands.Copy" CommandTarget="{Binding RelativeSource={RelativeSource TemplatedParent}}" Content="Copy"></Button>
+                                    <Button Command="ApplicationCommands.Copy" CommandTarget="{Binding RelativeSource={RelativeSource TemplatedParent}}" Content="Copy">
+                                        
+                                    </Button>
                                     <Separator Style="{StaticResource sepStyle}"/>
-                                    <Button Command="NavigationCommands.IncreaseZoom" CommandTarget="{Binding RelativeSource={RelativeSource TemplatedParent}}" Content="Zoom In"></Button>
-                                    <Button Command="NavigationCommands.DecreaseZoom" CommandTarget="{Binding RelativeSource={RelativeSource TemplatedParent}}" Content="Zoom Out"></Button>
+                                    <Button Command="NavigationCommands.IncreaseZoom" CommandTarget="{Binding RelativeSource={RelativeSource TemplatedParent}}" Content="Zoom In">
+                                        
+                                    </Button>
+                                    <Button Command="NavigationCommands.DecreaseZoom" CommandTarget="{Binding RelativeSource={RelativeSource TemplatedParent}}" Content="Zoom Out">
+                                        
+                                    </Button>
                                     <Separator Style="{StaticResource sepStyle}"/>
-                                    <Button Command="NavigationCommands.Zoom" CommandTarget="{Binding RelativeSource={RelativeSource TemplatedParent}}" CommandParameter="100.0" Content="Actual Size"></Button>
-                                    <Button Command="DocumentViewer.FitToWidthCommand" CommandTarget="{Binding RelativeSource={RelativeSource TemplatedParent}}" Content="Fit to Width"></Button>
-                                    <Button Command="DocumentViewer.FitToMaxPagesAcrossCommand" CommandTarget="{Binding RelativeSource={RelativeSource TemplatedParent}}" CommandParameter="1" Content="Whole Page"></Button>
-                                    <Button Command="DocumentViewer.FitToMaxPagesAcrossCommand" CommandTarget="{Binding RelativeSource={RelativeSource TemplatedParent}}" CommandParameter="2" Content="Two Pages"></Button>
+                                    <Button Command="NavigationCommands.Zoom" CommandTarget="{Binding RelativeSource={RelativeSource TemplatedParent}}" CommandParameter="100.0" Content="Actual Size">
+                                        
+                                    </Button>
+                                    <Button Command="DocumentViewer.FitToWidthCommand" CommandTarget="{Binding RelativeSource={RelativeSource TemplatedParent}}" Content="Fit to Width">
+                                        
+                                    </Button>
+                                    <Button Command="DocumentViewer.FitToMaxPagesAcrossCommand" CommandTarget="{Binding RelativeSource={RelativeSource TemplatedParent}}" CommandParameter="1" Content="Whole Page">
+                                        
+                                    </Button>
+                                    <Button Command="DocumentViewer.FitToMaxPagesAcrossCommand" CommandTarget="{Binding RelativeSource={RelativeSource TemplatedParent}}" CommandParameter="2" Content="Two Pages">
+                                        
+                                    </Button>
                                     <Separator Style="{StaticResource sepStyle}"/>
                                 </ToolBar>
-                                <ScrollViewer Grid.Row="1" CanContentScroll="true" HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Auto" x:Name="PART_ContentHost" IsTabStop="true" Background="White"></ScrollViewer>
-                                <ContentControl Grid.Row="2" x:Name="PART_FindToolBarHost"/>
+                                <ScrollViewer Grid.Row="1" x:Name="PART_ContentHost" CanContentScroll="true" HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Auto" IsTabStop="true" Background="White"/>
                             </Grid>
                         </Border>
                     </ControlTemplate>
