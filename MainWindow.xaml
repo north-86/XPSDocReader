@@ -10,7 +10,7 @@
         <SolidColorBrush x:Key="colorSt" Color="#AFE9DD"/>
         <Style TargetType="{x:Type MenuItem}">
             <Setter Property="ItemsControl.Background" Value="#AFE9DD"/>
-            <Setter Property="ItemsControl.FontSize" Value="13"/>
+            <Setter Property="ItemsControl.FontSize" Value="15"/>
             <Setter Property="ItemsControl.Foreground" Value="Black"/>
         </Style>
         <Style x:Key="sepStyle">
@@ -35,7 +35,7 @@
                                     <RowDefinition Height="*"/>
                                     <RowDefinition Height="Auto"/>
                                 </Grid.RowDefinitions>
-                                <ToolBar Grid.Row="0" ToolBarTray.IsLocked="True" KeyboardNavigation.TabNavigation="Continue" Background="#AFE9DD">
+                                <ToolBar Grid.Row="0" ToolBarTray.IsLocked="True" KeyboardNavigation.TabNavigation="Continue" Background="#AFE9DD" BorderBrush="Black" BorderThickness="1"> 
                                     <Button Command="ApplicationCommands.Print" CommandTarget="{Binding RelativeSource={RelativeSource TemplatedParent}}" Content="Print"></Button>
                                     <Separator Style="{StaticResource sepStyle}"/>
                                     <Button Command="ApplicationCommands.Copy" CommandTarget="{Binding RelativeSource={RelativeSource TemplatedParent}}" Content="Copy"></Button>
@@ -75,9 +75,9 @@
                 <MenuItem Header="About XPSDocReader" Click="About_Click"/>
             </MenuItem>
         </Menu>
-        <DocumentViewer x:Name="docViewer" Height="843" Margin="0,19,0,0" Grid.RowSpan="2" VerticalAlignment="Top"/>
+        <DocumentViewer x:Name="docViewer" Grid.Row="1"/>
         <StatusBar x:Name="statusBar" Grid.Row="2" Background="{StaticResource colorSt}">
-            <TextBlock x:Name="tbstatusBar"/>
+            <TextBlock x:Name="tbstatusBar" FontSize="13"/>
             <Separator Style="{StaticResource sepStyle}"/>
         </StatusBar>
     </Grid>
