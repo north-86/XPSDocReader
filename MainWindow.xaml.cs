@@ -34,6 +34,7 @@ namespace XPSDocReader
             {
                 XpsDocument doc = new XpsDocument(openFileDialog.FileName, FileAccess.Read);
                 docViewer.Document = doc.GetFixedDocumentSequence();
+                tbstatusBar2.Text = openFileDialog.FileName;
                 doc.Close();
             }
         }
@@ -58,6 +59,6 @@ namespace XPSDocReader
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
             tbstatusBar.Text = "In Action";
-        }
+        }     
     }
 }
