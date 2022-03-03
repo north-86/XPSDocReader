@@ -35,6 +35,7 @@ namespace XPSDocReader
                 XpsDocument doc = new XpsDocument(openFileDialog.FileName, FileAccess.Read);
                 docViewer.Document = doc.GetFixedDocumentSequence();
                 tbstatusBar2.Text = openFileDialog.FileName;
+                tbstatusBar3.Text = "Pages:  " + docViewer.PageCount.ToString();
                 doc.Close();
             }
         }
@@ -59,6 +60,12 @@ namespace XPSDocReader
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
             tbstatusBar.Text = "In Action";
-        }     
+        }
+
+        private void GoTo_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            TextBox textBox = sender as TextBox;
+            docViewer.GoToPage(Convert.ToInt32(textBox.Text));
+        }
     }
 }
