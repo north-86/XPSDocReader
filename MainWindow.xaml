@@ -7,7 +7,6 @@
         mc:Ignorable="d"
         Title="XPSDocReader" Height="900" MinHeight="600" Width="1350" MinWidth="900" WindowStartupLocation="CenterScreen" ResizeMode="CanResizeWithGrip" Loaded="Window_Loaded">
     <Window.Resources>
-        <SolidColorBrush x:Key="colorSt" Color="#AFE9DD"/>
         <Style TargetType="{x:Type MenuItem}">
             <Setter Property="ItemsControl.Background" Value="#AFE9DD"/>
             <Setter Property="ItemsControl.FontSize" Value="15"/>
@@ -17,6 +16,11 @@
             <Setter Property="ItemsControl.Background" Value="Black"/>
             <Setter Property="ItemsControl.Width" Value="1"/>
             <Setter Property="ItemsControl.HorizontalAlignment" Value="Left"/>
+        </Style>
+        <Style x:Key="btnStyle">
+            <Setter Property="ItemsControl.Background" Value="#AFE9DD"/>
+            <Setter Property="ItemsControl.BorderBrush" Value="Black"/>
+            <Setter Property="ItemsControl.BorderThickness" Value="1"/>
         </Style>
         <Style x:Key="{x:Type DocumentViewer}" TargetType="{x:Type DocumentViewer}">
             <Setter Property="Foreground" Value="{DynamicResource {x:Static SystemColors.WindowTextBrushKey}}"/>
@@ -33,38 +37,54 @@
                                 <Grid.RowDefinitions>
                                     <RowDefinition Height="Auto"/>
                                     <RowDefinition Height="*"/>
+                                    <RowDefinition Height="Auto"/>
                                 </Grid.RowDefinitions>
-                                <ToolBar Grid.Row="0" ToolBarTray.IsLocked="True" KeyboardNavigation.TabNavigation="Continue" Background="#AFE9DD" BorderBrush="Black" BorderThickness="1"> 
-                                    <Button Command="ApplicationCommands.Print" CommandTarget="{Binding RelativeSource={RelativeSource TemplatedParent}}" Content="Print">
-                                        
-                                    </Button>
-                                    <Separator Style="{StaticResource sepStyle}"/>
-                                    <Button Command="ApplicationCommands.Copy" CommandTarget="{Binding RelativeSource={RelativeSource TemplatedParent}}" Content="Copy">
-                                        
-                                    </Button>
-                                    <Separator Style="{StaticResource sepStyle}"/>
-                                    <Button Command="NavigationCommands.IncreaseZoom" CommandTarget="{Binding RelativeSource={RelativeSource TemplatedParent}}" Content="Zoom In">
-                                        
-                                    </Button>
-                                    <Button Command="NavigationCommands.DecreaseZoom" CommandTarget="{Binding RelativeSource={RelativeSource TemplatedParent}}" Content="Zoom Out">
-                                        
-                                    </Button>
-                                    <Separator Style="{StaticResource sepStyle}"/>
-                                    <Button Command="NavigationCommands.Zoom" CommandTarget="{Binding RelativeSource={RelativeSource TemplatedParent}}" CommandParameter="100.0" Content="Actual Size">
-                                        
-                                    </Button>
-                                    <Button Command="DocumentViewer.FitToWidthCommand" CommandTarget="{Binding RelativeSource={RelativeSource TemplatedParent}}" Content="Fit to Width">
-                                        
-                                    </Button>
-                                    <Button Command="DocumentViewer.FitToMaxPagesAcrossCommand" CommandTarget="{Binding RelativeSource={RelativeSource TemplatedParent}}" CommandParameter="1" Content="Whole Page">
-                                        
-                                    </Button>
-                                    <Button Command="DocumentViewer.FitToMaxPagesAcrossCommand" CommandTarget="{Binding RelativeSource={RelativeSource TemplatedParent}}" CommandParameter="2" Content="Two Pages">
-                                        
-                                    </Button>
-                                    <Separator Style="{StaticResource sepStyle}"/>
-                                </ToolBar>
-                                <ScrollViewer Grid.Row="1" x:Name="PART_ContentHost" CanContentScroll="true" HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Auto" IsTabStop="true" Background="White"/>
+                                <Grid Grid.Row="0">
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition/>
+                                        <ColumnDefinition/>
+                                        <ColumnDefinition Width="50"/>
+                                        <ColumnDefinition Width="50"/>
+                                        <ColumnDefinition/>
+                                        <ColumnDefinition Width="50"/>
+                                        <ColumnDefinition Width="50"/>
+                                        <ColumnDefinition/>
+                                        <ColumnDefinition/>
+                                    </Grid.ColumnDefinitions>
+                                    <Button Grid.Column="0" Command="ApplicationCommands.Print" CommandTarget="{Binding RelativeSource={RelativeSource TemplatedParent}}" Style="{StaticResource btnStyle}" Content="Print"/>
+                                    <Button Grid.Column="1" Command="ApplicationCommands.Copy" CommandTarget="{Binding RelativeSource={RelativeSource TemplatedParent}}" Style="{StaticResource btnStyle}" Content="Copy"/>
+                                    <Button Grid.Column="2" Command="NavigationCommands.FirstPage" CommandTarget="{Binding RelativeSource={RelativeSource TemplatedParent}}" Style="{StaticResource btnStyle}" Content="|&lt;-"/>
+                                    <Button Grid.Column="3" Command="NavigationCommands.PreviousPage" CommandTarget="{Binding RelativeSource={RelativeSource TemplatedParent}}" Style="{StaticResource btnStyle}" Content="&lt;-"/>
+                                    <Button Grid.Column="4"/>
+                                    <Button Grid.Column="5" Command="NavigationCommands.NextPage" CommandTarget="{Binding RelativeSource={RelativeSource TemplatedParent}}" Style="{StaticResource btnStyle}" Content="-&gt;"/>
+                                    <Button Grid.Column="6" Command="NavigationCommands.LastPage" CommandTarget="{Binding RelativeSource={RelativeSource TemplatedParent}}" Style="{StaticResource btnStyle}" Content="-&gt;|"/>
+                                    <Button Grid.Column="7" Command="DocumentViewer.FitToMaxPagesAcrossCommand" CommandTarget="{Binding RelativeSource={RelativeSource TemplatedParent}}" CommandParameter="1" Style="{StaticResource btnStyle}" Content="Whole Page"/>
+                                    <Button Grid.Column="8" Command="DocumentViewer.FitToMaxPagesAcrossCommand" CommandTarget="{Binding RelativeSource={RelativeSource TemplatedParent}}" CommandParameter="2" Style="{StaticResource btnStyle}" Content="Two Pages"/>
+                                </Grid>
+                                <ScrollViewer Grid.Row="1" x:Name="PART_ContentHost" CanContentScroll="true" HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Auto" IsTabStop="true">
+                                    <ScrollViewer.Background>
+                                        <SolidColorBrush Color="{DynamicResource ControlColor}"/>
+                                    </ScrollViewer.Background>
+                                </ScrollViewer>
+                                <Grid Grid.Row="2">
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="60"/>
+                                        <ColumnDefinition Width="80"/>
+                                        <ColumnDefinition Width="60"/>
+                                        <ColumnDefinition Width="*"/>
+                                        <ColumnDefinition Width="50"/>
+                                        <ColumnDefinition Width="50"/>
+                                        <ColumnDefinition Width="50"/>
+                                        <ColumnDefinition Width="50"/>
+                                    </Grid.ColumnDefinitions>
+                                    <Button Grid.Column="0" Command="NavigationCommands.IncreaseZoom" CommandTarget="{Binding RelativeSource={RelativeSource TemplatedParent}}" Style="{StaticResource btnStyle}" Content="Zoom +"/>
+                                    <Button Grid.Column="1" Command="DocumentViewer.FitToWidthCommand" CommandTarget="{Binding RelativeSource={RelativeSource TemplatedParent}}" Style="{StaticResource btnStyle}" Content="Fit to Width"/>
+                                    <Button Grid.Column="2" Command="NavigationCommands.DecreaseZoom" CommandTarget="{Binding RelativeSource={RelativeSource TemplatedParent}}" Style="{StaticResource btnStyle}" Content="Zoom -"/>
+                                    <Button Grid.Column="4" Command="NavigationCommands.Zoom" CommandTarget="{Binding RelativeSource={RelativeSource TemplatedParent}}" CommandParameter="100.0" Style="{StaticResource btnStyle}" Content="100 %"/>
+                                    <Button Grid.Column="5" Command="NavigationCommands.Zoom" CommandTarget="{Binding RelativeSource={RelativeSource TemplatedParent}}" CommandParameter="75.0" Style="{StaticResource btnStyle}" Content="75 %"/>
+                                    <Button Grid.Column="6" Command="NavigationCommands.Zoom" CommandTarget="{Binding RelativeSource={RelativeSource TemplatedParent}}" CommandParameter="50.0" Style="{StaticResource btnStyle}" Content="50 %"/>
+                                    <Button Grid.Column="7" Command="NavigationCommands.Zoom" CommandTarget="{Binding RelativeSource={RelativeSource TemplatedParent}}" CommandParameter="25.0" Style="{StaticResource btnStyle}" Content="25 %"/>
+                                </Grid>
                             </Grid>
                         </Border>
                     </ControlTemplate>
@@ -79,7 +99,10 @@
             <RowDefinition Height="*"/>
             <RowDefinition Height="Auto"/>
         </Grid.RowDefinitions>
-        <Menu x:Name="menu" Grid.Row="0" Background="{StaticResource colorSt}">
+        <Menu x:Name="menu" Grid.Row="0">
+            <Menu.Background>
+                <SolidColorBrush Color="{DynamicResource ControlColor}"/>
+            </Menu.Background>
             <MenuItem Header="File">
                 <MenuItem Header="Open" Click="Open_Click"/>
                 <MenuItem Header="Save" Click="Save_Click"/>
@@ -90,9 +113,13 @@
             </MenuItem>
         </Menu>
         <DocumentViewer x:Name="docViewer" Grid.Row="1"/>
-        <StatusBar x:Name="statusBar" Grid.Row="2" Background="{StaticResource colorSt}">
+        <StatusBar x:Name="statusBar" Grid.Row="2" BorderBrush="Black" BorderThickness="1">
+            <StatusBar.Background>
+                <SolidColorBrush Color="{DynamicResource ControlColor}"/>
+            </StatusBar.Background>
             <TextBlock x:Name="tbstatusBar" FontSize="13"/>
             <Separator Style="{StaticResource sepStyle}"/>
+            <TextBlock x:Name="tbstatusBar2" FontSize="13"/>
         </StatusBar>
     </Grid>
 </Window>
