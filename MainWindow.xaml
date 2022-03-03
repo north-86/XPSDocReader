@@ -55,7 +55,7 @@
                                     <Button Grid.Column="1" Command="ApplicationCommands.Copy" CommandTarget="{Binding RelativeSource={RelativeSource TemplatedParent}}" Style="{StaticResource btnStyle}" Content="Copy"/>
                                     <Button Grid.Column="2" Command="NavigationCommands.FirstPage" CommandTarget="{Binding RelativeSource={RelativeSource TemplatedParent}}" Style="{StaticResource btnStyle}" Content="|&lt;-"/>
                                     <Button Grid.Column="3" Command="NavigationCommands.PreviousPage" CommandTarget="{Binding RelativeSource={RelativeSource TemplatedParent}}" Style="{StaticResource btnStyle}" Content="&lt;-"/>
-                                    <Button Grid.Column="4"/>
+                                    <TextBox Grid.Column="4" HorizontalContentAlignment="Center" TextChanged="GoTo_TextChanged"/>
                                     <Button Grid.Column="5" Command="NavigationCommands.NextPage" CommandTarget="{Binding RelativeSource={RelativeSource TemplatedParent}}" Style="{StaticResource btnStyle}" Content="-&gt;"/>
                                     <Button Grid.Column="6" Command="NavigationCommands.LastPage" CommandTarget="{Binding RelativeSource={RelativeSource TemplatedParent}}" Style="{StaticResource btnStyle}" Content="-&gt;|"/>
                                     <Button Grid.Column="7" Command="DocumentViewer.FitToMaxPagesAcrossCommand" CommandTarget="{Binding RelativeSource={RelativeSource TemplatedParent}}" CommandParameter="1" Style="{StaticResource btnStyle}" Content="Whole Page"/>
@@ -63,7 +63,7 @@
                                 </Grid>
                                 <ScrollViewer Grid.Row="1" x:Name="PART_ContentHost" CanContentScroll="true" HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Auto" IsTabStop="true">
                                     <ScrollViewer.Background>
-                                        <SolidColorBrush Color="{DynamicResource ControlColor}"/>
+                                        <SolidColorBrush Color="{DynamicResource ControlColor2}"/>
                                     </ScrollViewer.Background>
                                 </ScrollViewer>
                                 <Grid Grid.Row="2">
@@ -91,7 +91,12 @@
                 </Setter.Value>
             </Setter>
         </Style>
+        <Style x:Key="textBlockStyle">
+            <Setter Property="ItemsControl.FontSize" Value="13"/>
+            <Setter Property="ItemsControl.Margin" Value="10, 0, 10, 0"/>
+        </Style>
         <Color x:Key="ControlColor">#AFE9DD</Color>
+        <Color x:Key="ControlColor2">LightGray</Color>
     </Window.Resources>
     <Grid>
         <Grid.RowDefinitions>
@@ -117,9 +122,11 @@
             <StatusBar.Background>
                 <SolidColorBrush Color="{DynamicResource ControlColor}"/>
             </StatusBar.Background>
-            <TextBlock x:Name="tbstatusBar" FontSize="13"/>
+            <TextBlock x:Name="tbstatusBar" Style="{StaticResource textBlockStyle}"/>
             <Separator Style="{StaticResource sepStyle}"/>
-            <TextBlock x:Name="tbstatusBar2" FontSize="13"/>
+            <TextBlock x:Name="tbstatusBar2" Style="{StaticResource textBlockStyle}"/>
+            <Separator Style="{StaticResource sepStyle}"/>
+            <TextBlock x:Name="tbstatusBar3" Style="{StaticResource textBlockStyle}"/>
         </StatusBar>
     </Grid>
 </Window>
