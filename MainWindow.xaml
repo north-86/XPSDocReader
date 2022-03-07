@@ -115,6 +115,7 @@
             </MenuItem>
             <MenuItem Header="Help">
                 <MenuItem Header="About XPSDocReader" Click="About_Click"/>
+                <Hyperlink Click="Hyperlink_Click">Program code on GitHub</Hyperlink>
             </MenuItem>
         </Menu>
         <DocumentViewer x:Name="docViewer" Grid.Row="1"/>

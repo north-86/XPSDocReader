@@ -1,6 +1,7 @@
 ﻿using Microsoft.Win32;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using System.Text;
@@ -48,6 +49,16 @@ namespace XPSDocReader
         private void Exit_Click(object sender, RoutedEventArgs e)
         {
             this.Close();
+        }
+
+        private void Hyperlink_Click(object sender, RoutedEventArgs e)
+        {
+            var url = "https://github.com/northernman86/XPSDocReader";
+            var info = new ProcessStartInfo(url)
+            {
+                UseShellExecute = true,
+            };
+            Process.Start(info);
         }
 
         private void About_Click(object sender, RoutedEventArgs e)
