@@ -110,7 +110,7 @@
             </Menu.Background>
             <MenuItem Header="File">
                 <MenuItem Header="Open" Click="Open_Click"/>
-                <MenuItem Header="Save" Click="Save_Click"/>
+                <MenuItem Header="Close" Click="Close_Click"/>
                 <MenuItem Header="Exit" Click="Exit_Click"/>
             </MenuItem>
             <MenuItem Header="Help">
