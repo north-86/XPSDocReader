@@ -41,9 +41,9 @@ namespace XPSDocReader
             }
         }
 
-        private void Save_Click(object sender, RoutedEventArgs e)
+        private void Close_Click(object sender, RoutedEventArgs e)
         {
-
+            docViewer.Document = null;
         }
 
         private void Exit_Click(object sender, RoutedEventArgs e)
