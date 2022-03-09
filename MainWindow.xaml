@@ -55,7 +55,14 @@
                                     <Button Grid.Column="1" Command="ApplicationCommands.Copy" CommandTarget="{Binding RelativeSource={RelativeSource TemplatedParent}}" Style="{StaticResource btnStyle}" Content="Copy"/>
                                     <Button Grid.Column="2" Command="NavigationCommands.FirstPage" CommandTarget="{Binding RelativeSource={RelativeSource TemplatedParent}}" Style="{StaticResource btnStyle}" Content="|&lt;-"/>
                                     <Button Grid.Column="3" Command="NavigationCommands.PreviousPage" CommandTarget="{Binding RelativeSource={RelativeSource TemplatedParent}}" Style="{StaticResource btnStyle}" Content="&lt;-"/>
-                                    <TextBox Grid.Column="4" HorizontalContentAlignment="Center" TextChanged="GoTo_TextChanged"/>
+                                    <Grid Grid.Column="4">
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="70"/>
+                                            <ColumnDefinition Width="*"/>
+                                        </Grid.ColumnDefinitions>
+                                        <TextBox Grid.Column="0" x:Name="pageNumber" HorizontalContentAlignment="Center" Text="1"/>
+                                        <Button Grid.Column="1" Command="NavigationCommands.GoToPage" CommandTarget="{Binding ElementName=PART_ContentHost}" CommandParameter="{Binding ElementName=pageNumber,Path=Text}" Style="{StaticResource btnStyle}" Content="Go to Page"/>
+                                    </Grid>
                                     <Button Grid.Column="5" Command="NavigationCommands.NextPage" CommandTarget="{Binding RelativeSource={RelativeSource TemplatedParent}}" Style="{StaticResource btnStyle}" Content="-&gt;"/>
                                     <Button Grid.Column="6" Command="NavigationCommands.LastPage" CommandTarget="{Binding RelativeSource={RelativeSource TemplatedParent}}" Style="{StaticResource btnStyle}" Content="-&gt;|"/>
                                     <Button Grid.Column="7" Command="DocumentViewer.FitToMaxPagesAcrossCommand" CommandTarget="{Binding RelativeSource={RelativeSource TemplatedParent}}" CommandParameter="1" Style="{StaticResource btnStyle}" Content="Whole Page"/>

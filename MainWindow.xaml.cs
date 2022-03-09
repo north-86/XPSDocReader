@@ -72,11 +72,5 @@ namespace XPSDocReader
         {
             tbstatusBar.Text = "In Action";
         }
-
-        private void GoTo_TextChanged(object sender, TextChangedEventArgs e)
-        {
-            TextBox textBox = sender as TextBox;
-            docViewer.GoToPage(Convert.ToInt32(textBox.Text));
-        }
     }
 }
