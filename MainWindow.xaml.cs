@@ -44,6 +44,8 @@ namespace XPSDocReader
         private void Close_Click(object sender, RoutedEventArgs e)
         {
             docViewer.Document = null;
+            tbstatusBar2.Text = null;
+            tbstatusBar3.Text = null;
         }
 
         private void Exit_Click(object sender, RoutedEventArgs e)
