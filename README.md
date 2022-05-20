@@ -1,5 +1,5 @@
 # XPSDocReader
-This application works with XPS documents.
+This application works with XPS documents (read, copy, zoom, print).
 
 Main window
 
